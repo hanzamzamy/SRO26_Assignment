@@ -35,7 +35,7 @@
   [*Dosen*], [: Muhammad Qomaruz Zaman, S.T., M.T., Ph.D.],
   [*Nama Kelas*], [: Sistem Robot Otonom],
   [*Link video YouTube*], [: #link("https://youtu.be/p1ie1GPLm3c")],
-  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Odometry.git")]
+  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Assignment/tree/3")]
 )
 #v(1.5cm)
 
