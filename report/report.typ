@@ -23,7 +23,7 @@
 // Bagian Judul
 #align(center)[
   #v(1em)
-  #text(size: 18pt)[Laporan Analisis Kinematika Pioneer P3DX] 
+  #text(size: 18pt)[Laporan Analisis Spasial dan Odometri Pioneer P3DX] 
   #v(1em)
 ]
 
@@ -34,45 +34,46 @@
   [*Penulis*], [: Rayhan Rizqi Zamzamy],
   [*Dosen*], [: Muhammad Qomaruz Zaman, S.T., M.T., Ph.D.],
   [*Nama Kelas*], [: Sistem Robot Otonom],
-  [*Link video YouTube*], [: #link("https://youtu.be/p1ie1GPLm3c")],
-  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Odometry.git")]
+  [*Link video YouTube*], [: #link("https://youtu.be/xgot_TmPZvw")],
+  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Assignment/tree/5")]
 )
 #v(1.5cm)
 
 = Pendahuluan
-Laporan ini menyajikan analisis pembacaan data kecepatan pada robot diferensial Pioneer P3DX yang disimulasikan menggunakan perangkat lunak CoppeliaSim. Fokus utama dari analisis ini adalah memverifikasi parameter kecepatan operasional robot berdasarkan skrip kontrol aktuasi bawaan, serta mengevaluasi profil pergerakan robot saat bermanuver menghindari rintangan menggunakan algoritma Braitenberg.
+Laporan ini membahas perbandingan profil lintasan spasial 2D dari robot _differential drive_ Pioneer P3DX menggunakan tiga pendekatan berbeda: integrasi odometri sudut relatif, odometri sudut absolut (orientasi _ground truth_), dan lintasan aktual di dalam simulator. Analisis ini bertujuan untuk mengevaluasi dampak slip roda dan akumulasi eror pada kalkulasi posisi (odometri) _mobile robot_ @tzafestas2013introduction. 
 
-= Analisis Kecepatan Target
-Pada skrip Lua bawaan di dalam CoppeliaSim, algoritma Braitenberg digunakan untuk navigasi penghindaran rintangan sederhana menggunakan pembacaan sensor ultrasonik. Skrip tersebut mendefinisikan kecepatan dasar robot (`v0`) sebesar $2 "rad/s"$. Nilai `v0` ini digunakan sebagai basis kecepatan roda (`motorLeft` dan `motorRight`) yang kemudian diatur menggunakan fungsi `setJointTargetVelocity`.
+= Pemodelan Odometri
+Kalkulasi posisi robot dilakukan dengan mengintegrasikan kecepatan translasi ($V_x$) terhadap waktu ($Delta t$). Kecepatan translasi didapatkan dari persamaan _forward kinematics_ dasar berdasarkan kecepatan sudut roda kanan dan kiri @corke2011robotics. Dalam analisis ini, terdapat dua metode kalkulasi lintasan yang digunakan:
 
-```lua
-sim.setJointTargetVelocity(motorLeft,vLeft)
-sim.setJointTargetVelocity(motorRight,vRight)
-```
+== Odometri Sudut Relatif (Integrasi Kecepatan Sudut)
+Metode ini murni bergantung pada data internal dari perputaran roda aktuator (_proprioceptive sensors_). Sudut _heading_ atau orientasi bodi robot ($theta$) diestimasi dengan mengintegrasikan kecepatan sudut ($omega$) dari persamaan kinematika.
+$ theta_(k) = theta_(k-1) + omega Delta t $ <eq:theta_rel>
+$ x_k = x_(k-1) + V_x cos(theta_k) Delta t $ <eq:x_rel>
+$ y_k = y_(k-1) + V_x sin(theta_k) Delta t $ <eq:y_rel>
 
-Fungsi `setJointTargetVelocity` pada CoppeliaSim menerima input dalam satuan radian per detik ($"rad/s"$). Oleh karena itu, kecepatan target dasar masing-masing roda ($omega$) adalah sebesar $2 "rad/s"$. Mengingat jari-jari roda Pioneer P3DX ($r_w$) adalah $0.0975 "m"$, maka kecepatan linear aktual masing-masing roda di permukaan tanah dapat dihitung sebagai:
+== Odometri Sudut Absolut (Data Orientasi Aktual)
+Metode ini menggunakan kecepatan translasi dari roda ($V_x$), namun mengabaikan estimasi orientasi dari integrasi kinematika. Sebagai gantinya, sudut _heading_ ($theta_"sim"$) ditarik langsung dari data absolut simulator sebagai representasi sensor IMU atau kompas digital yang ideal di dunia nyata.
+$ x_k = x_(k-1) + V_x cos(theta_"sim") Delta t $ <eq:x_abs>
+$ y_k = y_(k-1) + V_x sin(theta_"sim") Delta t $ <eq:y_abs>
 
-$ v = omega times r_w = 2 times 0.0975 = 0.195 "m/s" $ <eq:omega>
-
-#h(-1.8em)Perhitungan ini membuktikan bahwa kecepatan maju maksimum robot di dalam simulasi sekitar $0.195 "m/s"$.
-
-= Kinematika _Differential Drive_
-Untuk mendapatkan estimasi _ground-truth_ dari kecepatan translasi ($V_x$) dan kecepatan sudut bodi robot ($omega$), digunakan persamaan _forward kinematics_ standar untuk arsitektur _differential drive_ @tzafestas2013introduction @corke2011robotics. Kecepatan linear robot dihitung dari rata-rata kecepatan linear kedua roda penggeraknya:
-$ V_x = r_w / 2 (omega_R + omega_L) $ <eq:vx>
-
-#h(-1.8em)Sedangkan kecepatan sudut bodi pusat bergantung pada selisih kecepatan kedua roda yang terdistribusi sepanjang jarak lintasan (_track width_). Jika $r_b$ didefinisikan sebagai setengah dari jarak lintasan total ($L = 2r_b$), maka:
-$ omega = r_w / (2 r_b) (omega_R - omega_L) $ <eq:omega_body>
-
-= Analisis Grafik Kecepatan Temporal
-Profil pergerakan robot selama berjalannya algoritma Braitenberg direkam dan diplot terhadap waktu, seperti yang ditunjukkan pada gambar berikut.
+= Analisis Perbandingan Lintasan Spasial
+Profil lintasan selama simulasi 90 detik di-_plot_ ke dalam bidang kartesian 2D, menghasilkan tiga kurva spasial yang merepresentasikan ketiga metode pembacaan posisi.
 
 #figure(
-image("odom_real_2.png", width: 90%),
-caption: [Plot temporal dari kecepatan roda dan kecepatan bodi Pioneer P3DX selama simulasi.],
+  image("odom_spatial.png", width: 85%),
+  caption: [Plot spasial posisi X-Y P3DX menggunakan metode odometri dan _ground truth_.],
 )
 
-Berdasarkan _subplot_ pertama (_Temporal Plot of P3DX Joint Velocity_), kecepatan kedua roda ($dot(phi)_R$ dan $dot(phi)_L$) memulai pergerakan secara konstan pada target $2 "rad/s"$. Namun, seiring berjalannya simulasi, terjadi empat anomali penurunan kecepatan yang tajam pada roda kanan ($dot(phi)_R$), di mana kecepatannya menukik hingga bernilai negatif (sekitar $-0.5 "rad/s"$). Di saat yang sama, kecepatan roda kiri ($dot(phi)_L$) hanya mengalami sedikit penurunan dan tetap bernilai positif. Hal ini mengindikasikan bahwa roda kanan bergerak mundur sementara roda kiri terus maju, yang merupakan respons penghindaran rintangan dari algoritma Braitenberg.
+Berdasarkan _plot_ di atas, terdapat beberapa temuan krusial terkait sifat dasar odometri dan simulasi fisika robotika:
 
-Fenomena ini tervalidasi dengan sangat jelas pada _subplot_ kedua (_Temporal Plot of P3DX Body Velocity_). Saat robot bergerak lurus (kecepatan roda konstan), kecepatan linear ($V_x$) terukur berada di garis lurus yang sedikit di bawah $0.2 "m/s"$, yang mana sangat presisi dengan hasil perhitungan analitis yaitu $0.195 "m/s"$ pada @eq:omega. Selain itu, grafik kecepatan sudut bodi ($omega$) menampilkan empat lembah bernilai negatif tajam yang mencapai titik terendah di sekitar $-0.4 "rad/s"$. Nilai kecepatan sudut yang negatif menegaskan bahwa robot berputar searah jarum jam (_clockwise_). Jumlah empat lembah tersebut mengonfirmasi bahwa robot mendeteksi rintangan dan melakukan manuver putar kanan sebanyak empat kali sepanjang periode observasi 30 detik.
++ *Perbedaan Titik Awal (_Reference Frame_):* Lintasan _Ground Truth_ (hitam) dimulai dari titik koordinat aktual bodi robot di dalam ruang simulasi absolut $(0.6, -0.125)$. Sebaliknya, kedua lintasan odometri (hijau dan biru) dimulai dari titik $(0, 0)$. Hal ini merepresentasikan sifat alami odometri yang bekerja pada kerangka referensi lokal (_relative frame_), di mana posisi dihitung relatif terhadap titik mula, bukan terhadap koordinat dunia nyata.
++ *Lintasan _Ground Truth_ (Hitam):* Lintasan ini menunjukkan posisi aktual (_center of mass_) robot di dalam simulasi CoppeliaSim. Terlihat bahwa robot bergerak menyusuri area di dalam kotak batas merah ($5 "m" times 5 "m"$) dan berhasil menghindari rintangan (dinding) secara konsisten pada jarak tertentu karena dipandu oleh algoritma Braitenberg.
++ *Deviasi Odometri Relatif (Hijau):* Lintasan hijau yang dikalkulasi murni dari integrasi putaran roda mengalami divergensi yang sangat parah. Karena roda robot mengalami slip fisik (slip translasi dan slip rotasi akibat tarikan _caster wheel_), kecepatan aktuator roda tidak 100% terkonversi menjadi pergerakan bodi. Eror kecil pada integrasi $omega$ (@eq:theta_rel) menyebabkan eror orientasi orientasi. Eror pada _heading_ ini terakumulasi terus menerus seiring waktu (_unbounded cumulative error_), membelokkan arah integrasi sumbu $X$ dan $Y$ hingga akhirnya lintasan bergeser secara masif.
++ *Koreksi Odometri Absolut (Biru):* Lintasan biru menggunakan orientasi yang sempurna ($theta_"sim"$). Akibatnya, profil lintasan biru memiliki bentuk pola haluan yang sangat mirip dan sejajar dengan lintasan _Ground Truth_. Hal ini membuktikan bahwa menghilangkan eror integrasi orientasi dapat secara signifikan menekan deviasi lintasan (_drift_). Meskipun demikian, masih terdapat deviasi linear dibandingkan lintasan _Ground Truth_. Hal ini disebabkan karena nilai ($V_x$) masih ditarik dari integrasi putaran roda yang mengalami slip, sehingga jarak tempuh robot menurut putaran roda sedikit berbeda dari jarak tempuh bodi fisiknya.
+
+= Kesimpulan
+_Plot_ spasial ini membuktikan bahwa kalkulasi odometri relatif murni menggunakan kecepatan roda sangat rentan terhadap akumulasi eror, khususnya pada estimasi _heading_ akibat slip mekanis yang diperparah seiring berjalannya waktu. Penggunaan data orientasi eksternal absolut (_Absolute Angle Odometry_) terbukti sukses mengoreksi penyimpangan lintasan, mempertahankan bentuk manuver asli robot, meskipun kompensasi translasi (_wheel slip translation_) tetap dibutuhkan untuk mencapai akurasi _ground truth_ seutuhnya.
+
+Adapun fenomena yang tidak diuji yaitu efek _relative frame_ dari odometri sudut relatif, di mana posisi dihitung relatif terhadap titik awal. Hal ini orientasi awal berbeda dengan orientasi dunia nyata, sehingga meskipun bentuk lintasan relatif benar, posisi absolutnya bisa sangat berbeda. Hal ini menunjukkan bahwa odometri relatif lebih cocok untuk navigasi lokal atau dalam konteks di mana posisi awal diketahui dan tetap, sedangkan odometri absolut lebih diperlukan untuk aplikasi yang memerlukan akurasi posisi global.
 
 #bibliography("references.bib", style: "ieee")
