@@ -42,8 +42,8 @@ sim.setObjectOrientation(wall_xp, sim.handle_world, [0.0, 0.0, math.pi / 2])
 sim.setObjectOrientation(wall_xm, sim.handle_world, [0.0, 0.0, math.pi / 2])
 
 # Initialize robot (position and orientation)
-start_position    = [0.6, -0.125, 0.13879] 
-start_orientation = [0.0, 0.0, 0.0] 
+start_position    = [0.6, -0.125, 0.13879]
+start_orientation = [0.0, 0.0, 0.0]
 
 sim.setObjectPosition(p3dx, sim.handle_world, start_position)
 sim.setObjectOrientation(p3dx, sim.handle_world, start_orientation)
@@ -64,7 +64,7 @@ print("Simulation Started")
 # Parameters
 rw = 0.195 / 2.0 # Wheel radius (half of the diameter)
 # rb = 0.381 / 2 # This makes the angular velocity twice as fast, which is incorrect.
-rb = 0.381       # Distance between the wheels (track width)
+L = 0.381       # Distance between the wheels (track width)
 
 run_time = 90.0  # Run the simulation
 
@@ -119,7 +119,7 @@ try:
 
             # Calculation based on the kinematic model of a differential drive robot
             vx = (rw / 2.0) * (wr_vel + wl_vel)
-            wx = (rw / rb) * (wr_vel - wl_vel)
+            wx = (rw / L) * (wr_vel - wl_vel)
 
             # ------------------------------------------
             # Absolute angle odometry calculation (using world frame orientation)
