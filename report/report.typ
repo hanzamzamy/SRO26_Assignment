@@ -23,7 +23,7 @@
 // Bagian Judul
 #align(center)[
   #v(1em)
-  #text(size: 18pt)[Laporan Analisis Spasial dan Odometri Pioneer P3DX] 
+  #text(size: 18pt)[Permainan Sepak Bola Menggunakan Pioneer P3DX] 
   #v(1em)
 ]
 
@@ -34,46 +34,86 @@
   [*Penulis*], [: Rayhan Rizqi Zamzamy],
   [*Dosen*], [: Muhammad Qomaruz Zaman, S.T., M.T., Ph.D.],
   [*Nama Kelas*], [: Sistem Robot Otonom],
-  [*Link video YouTube*], [: #link("https://youtu.be/xgot_TmPZvw")],
-  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Assignment/tree/5")]
+  [*Link video YouTube*], [: #link("https://youtu.be/j83UhDDxh8s")],
+  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Assignment/tree/midtest")]
 )
 #v(1.5cm)
 
 = Pendahuluan
-Laporan ini membahas perbandingan profil lintasan spasial 2D dari robot _differential drive_ Pioneer P3DX menggunakan tiga pendekatan berbeda: integrasi odometri sudut relatif, odometri sudut absolut (orientasi _ground truth_), dan lintasan aktual di dalam simulator. Analisis ini bertujuan untuk mengevaluasi dampak slip roda dan akumulasi eror pada kalkulasi posisi (odometri) _mobile robot_ @tzafestas2013introduction. 
+Laporan ini membahas perancangan dan implementasi sistem multi-robot otonom dalam simulasi CoppeliaSim. Tujuan dari simulasi ini adalah untuk mendemonstrasikan koordinasi tiga unit robot _differential drive_ Pioneer P3DX yang diberikan peran spesifik (_Striker_, _Goalkeeper_, dan _Passer_) dalam skenario permainan sepak bola sederhana. Sistem dikendalikan secara tersentralisasi melalui ZeroMQ Remote API menggunakan bahasa pemrograman Python. Robot dirancang untuk memanipulasi objek (bola) secara murni melalui transfer momentum mekanis (tumbukan fisik) dengan mengandalkan kendali kinematika dan _Finite State Machine_.
 
-= Pemodelan Odometri
-Kalkulasi posisi robot dilakukan dengan mengintegrasikan kecepatan translasi ($V_x$) terhadap waktu ($Delta t$). Kecepatan translasi didapatkan dari persamaan _forward kinematics_ dasar berdasarkan kecepatan sudut roda kanan dan kiri @corke2011robotics. Dalam analisis ini, terdapat dua metode kalkulasi lintasan yang digunakan. Persamaan kinematika untuk kecepatan translasi dan angular adalah sebagai berikut.
+= Desain Sistem dan Pembagian Peran
+Sistem terdiri dari tiga entitas otonom yang beroperasi pada lingkungan yang sama. Koordinasi antar-robot dijembatani oleh kelas `GameState` yang melacak kemajuan fase permainan secara global, seperti status gol dan kesiapan penerima umpan.
 
-$ V_x = (r/2) (omega_r + omega_l) $ <eq:vx>
-$ omega_x = (r/L) (omega_r - omega_l) $ <eq:omega>
+== Penyerang Utama (_Striker Robot_)
+Robot ini bertugas sebagai unit ofensif utama. Algoritma robot ini mencakup kalkulasi trajektori penembakan cerdas (_smart aim_). Sebelum mengeksekusi tembakan, robot mengekstraksi posisi _Goalkeeper_ secara _real-time_ dan menghitung titik target optimal pada sisi gawang (lebar 2.2 m) yang tidak terjaga. Siklus operasinya meliputi tembakan bola pertama (merah), bermanuver ke titik siaga untuk menerima umpan, menjebak (_intercept_) bola kedua (biru), dan mengeksekusi tembakan akhir.
 
-#h(-1.8em) Dimana $r$ adalah jari-jari roda, $L$ adalah jarak antar roda, $omega_r$, & $omega_l$ adalah kecepatan sudut roda kanan & kiri.
+== Penjaga Gawang (_Goalkeeper Robot_)
+Robot ini bertindak sebagai unit defensif. Pada kondisi standar, robot melakukan patroli osilasi sinusoidal di sepanjang garis gawang. Jika tembakan bola pertama (merah) berhasil mencetak gol, kondisi robot berubah menjadi pelacak bola dan tidak melakukan osilasi secara buta. Ketika bola memasuki radius pertahanan (< 3 meter), status FSM robot berubah menjadi pelacakan aktif (_chase ball_) untuk memotong lintasan bola secara langsung @corke2011robotics. Robot ini hanya akan berpindah fokus dari bola merah ke bola biru setelah `GameState` memverifikasi bahwa gol pertama telah sah secara spasial.
 
-== Odometri Sudut Relatif (Integrasi Kecepatan Sudut)
-Metode ini murni bergantung pada data internal dari perputaran roda aktuator (_proprioceptive sensors_). Sudut _heading_ atau orientasi bodi robot ($theta$) diestimasi dengan mengintegrasikan kecepatan sudut ($omega_x$) dari persamaan kinematika.
-$ theta_(k) = theta_(k-1) + omega_x Delta t $ <eq:theta_rel>
-$ x_k = x_(k-1) + V_x cos(theta_k) Delta t $ <eq:x_rel>
-$ y_k = y_(k-1) + V_x sin(theta_k) Delta t $ <eq:y_rel>
+== Pengumpan (_Passer Robot_)
+Berperan sebagai unit pendukung. Algoritma robot ini dilengkapi dengan manuver navigasi aman (_navigate around ball_) untuk menghindari benturan prematur dengan bola saat melakukan _positioning_. Robot ini akan bersiaga tepat di belakang bola biru dan baru akan melakukan eksekusi umpan (menumbuk bola menuju _Striker_) setelah mendeteksi bahwa _Striker_ telah berada pada posisi menerima umpan dan gol pertama telah tercetak.
 
-== Odometri Sudut Absolut (Data Orientasi Aktual)
-Metode ini menggunakan kecepatan translasi dari roda ($V_x$), namun mengabaikan estimasi orientasi dari integrasi kinematika. Sebagai gantinya, sudut _heading_ ($theta_"sim"$) ditarik langsung dari data absolut simulator sebagai representasi sensor IMU atau kompas digital yang ideal di dunia nyata.
-$ x_k = x_(k-1) + V_x cos(theta_"sim") Delta t $ <eq:x_abs>
-$ y_k = y_(k-1) + V_x sin(theta_"sim") Delta t $ <eq:y_abs>
+#figure(
+  image("initial_state.png", width: 85%),
+  caption: [Kondisi awal _scene_ sepak bola pada CoppeliaSim.],
+)
 
-= Analisis Perbandingan Lintasan Spasial
-Profil lintasan selama simulasi 90 detik di-_plot_ ke dalam bidang kartesian 2D, menghasilkan tiga kurva spasial yang merepresentasikan ketiga metode pembacaan posisi.
+= Desain Pengendali dan Navigasi
 
-#h(-1.8em) Berdasarkan _plot_ di atas, terdapat beberapa temuan krusial terkait sifat dasar odometri dan simulasi fisika.
+== Kendali Proporsional Diferensial
+Seluruh robot mewarisi metode navigasi dari kelas dasar `RobotP3DX` dan `RoleBehaviorMixin`. Untuk mencapai titik target $(x_t, y_t)$, robot menghitung eror sudut, sudut _heading_ referensi dikurangi sudut aktual. Keluaran kecepatan roda kiri ($v_l$) dan kanan ($v_r$) dihitung menggunakan metode kendali proporsional @tzafestas2013introduction:
 
-+ *Perbedaan Titik Awal (_Reference Frame_):* Lintasan _Ground Truth_ (hitam) dimulai dari titik koordinat aktual bodi robot di dalam ruang simulasi absolut $(0.6, -0.125)$. Sebaliknya, kedua lintasan odometri (hijau dan biru) dimulai dari titik $(0, 0)$. Hal ini merepresentasikan sifat alami odometri yang bekerja pada kerangka referensi lokal (_relative frame_), di mana posisi dihitung relatif terhadap titik mula, bukan terhadap koordinat dunia nyata.
-+ *Lintasan _Ground Truth_ (Hitam):* Lintasan ini menunjukkan posisi aktual (_center of mass_) robot di dalam simulasi CoppeliaSim. Terlihat bahwa robot bergerak menyusuri area di dalam kotak batas merah ($5 "m" times 5 "m"$) dan berhasil menghindari rintangan (dinding) secara konsisten pada jarak tertentu karena dipandu oleh algoritma Braitenberg.
-+ *Deviasi Odometri Relatif (Hijau):* Lintasan hijau yang dikalkulasi murni dari integrasi putaran roda mengalami divergensi yang sangat parah. Karena roda robot mengalami slip fisik (slip translasi dan slip rotasi akibat tarikan _caster wheel_), kecepatan aktuator roda tidak 100% terkonversi menjadi pergerakan bodi. Eror kecil pada integrasi $omega$ (@eq:theta_rel) menyebabkan eror orientasi orientasi. Eror pada _heading_ ini terakumulasi terus menerus seiring waktu (_unbounded cumulative error_), membelokkan arah integrasi sumbu $X$ dan $Y$ hingga akhirnya lintasan bergeser secara masif.
-+ *Koreksi Odometri Absolut (Biru):* Lintasan biru menggunakan orientasi yang sempurna ($theta_"sim"$). Akibatnya, profil lintasan biru memiliki bentuk pola haluan yang sangat mirip dan sejajar dengan lintasan _Ground Truth_. Hal ini membuktikan bahwa menghilangkan eror integrasi orientasi dapat secara signifikan menekan deviasi lintasan (_drift_). Meskipun demikian, masih terdapat deviasi linear dibandingkan lintasan _Ground Truth_. Hal ini disebabkan karena nilai ($V_x$) masih ditarik dari integrasi putaran roda yang mengalami slip, sehingga jarak tempuh robot menurut putaran roda sedikit berbeda dari jarak tempuh bodi fisiknya.
+$ v_l = V_"base" - (K_p times theta_"err") $
+$ v_r = V_"base" + (K_p times theta_"err") $
 
-Beberapa kasus tambahan juga dianalisis untuk memvalidasi temuan utama. Pada kasus pertama, semua lintasan di-_plot_ dengan titik awal yang sama $(0, 0)$ untuk menegaskan _drift_ pada metode odometri. Metode sudut absolut menunjukan hasil yang sangat mendekati lintasan _Ground Truth_, sementara metode sudut relatif tetap menunjukkan deviasi yang signifikan. Pada kasus kedua, orientasi awal dari semua metode disamakan ($90degree$) pada posisi awal $(0, 0)$ untuk menegaskan _relative frame_ dari odometri. Metode sudut relatif memiliki pose yang berbeda, yaitu sudut awal diasumsikan $0degree$, karena estimasi berdasarkan pada $omega_x$. Metode sudut absolut memiliki pose yang sama dengan lintasan _Ground Truth_ karena menggunakan orientasi aktual dari simulator.
+Nilai kecepatan dasar ($V_"base"$) diturunkan secara dinamis berdasarkan besaran eror sudut. Jika eror sudut terlampau tajam ($> \pi/4$), kecepatan linear dasar direduksi menjadi nol sehingga robot dapat berputar di tempat (_point turn_) secara stabil tanpa kehilangan orientasi target.
+
+== Mekanisme Tumbukan (_Physical Ramming_)
+Untuk memindahkan bola, robot menggunakan pendekatan tumbukan fisik murni. Ketika robot berada pada jarak dekat dengan bola ($< 0.7$ meter) dan orientasi telah sejajar dengan target akhir, algoritma memicu status dorongan (_dash_). Dalam waktu sesaat ($0.5$ detik), kecepatan roda dibatasi dan dimaksimalkan pada nilai batas absolut ($V_"max" = 15.0 " rad/s"$). Manuver agresif ini mentransfer momentum kinetik dari sasis robot ke massa bola, menciptakan efek tendangan fisik yang realistis. Setelah limit waktu _dash_ tercapai, robot melakukan pengereman otomatis ($v_l = 0, v_r = 0$) agar tidak menggiring bola tanpa henti.
+
+= Hasil Simulasi dan Evaluasi
+Simulasi dijalankan dalam mode _synchronous stepping_ untuk menjamin stabilitas integrasi fisika mesin simulasi. Berdasarkan hasil iterasi eksperimental:
++ _Striker_ berhasil memprediksi celah gawang dan mengeksekusi tembakan bola merah tanpa mengenai _Goalkeeper_.
++ Sinkronisasi _Game State_ berfungsi optimal. _Passer_ menahan posisi statisnya, dan hanya melepaskan umpan bola biru sesaat setelah fungsi kalkulasi jarak mendeteksi bahwa bola merah telah sepenuhnya melewati garis gawang ($y = 0.0, x > 1.0$).
++ Penambahan status _Intercept_ pada _Striker_ terbukti krusial. _Striker_ menerapkan pengereman darurat untuk menjebak bola secara fisik, memastikan trajektori tembakan kedua tetap presisi.
+
+#figure(
+  image("sim1.png", width: 85%),
+  caption: [Setiap robot melakukan _positioning_ dan manuver sesuai peran masing-masing.],
+)
+
+#figure(
+  image("sim2.png", width: 85%),
+  caption: [_Striker_ menembak bola merah, _Passer_ menunggu di posisi, dan _Goalkeeper_ melakukan patroli osilasi.],
+)
+
+#figure(
+  image("sim4.png", width: 85%),
+  caption: [Gol pertama tercetak, _Passer_ mengeksekusi umpan, dan _Striker_ menangkap bola biru.],
+)
+
+#figure(
+  image("sim5.png", width: 85%),
+  caption: [_Striker_ memposisikan diri untuk tembakan akhir.],
+)
+
+#figure(
+  image("sim6.png", width: 85%),
+  caption: [_Striker_ menembak bola biru ke gawang, _Goalkeeper_ memposisikan diri untuk mengantisipasi.],
+)
+
+#figure(
+  image("sim7.png", width: 85%),
+  caption: [_Goalkeeper_ mencegah gol kedua.],
+)
+
+#figure(
+  image("sim8.png", width: 85%),
+  caption: [_Goalkeeper_ menggiring bola biru menjauh.],
+)
 
 = Kesimpulan
-_Plot_ spasial ini membuktikan bahwa kalkulasi odometri relatif murni menggunakan kecepatan roda sangat rentan terhadap akumulasi eror, khususnya pada estimasi _heading_ akibat slip mekanis yang diperparah seiring berjalannya waktu. Penggunaan data orientasi eksternal absolut (_Absolute Angle Odometry_) terbukti sukses mengoreksi penyimpangan lintasan, mempertahankan bentuk manuver asli robot, meskipun kompensasi translasi (_wheel slip translation_) tetap dibutuhkan untuk mencapai akurasi _ground truth_ seutuhnya.
+Implementasi sistem multi-robot ini membuktikan bahwa koordinasi taktis kompleks dapat dicapai dengan mengkombinasikan _Finite State Machine_ lokal pada masing-masing entitas dengan satu variabel sinkronisasi global. Penggunaan metode kendali proporsional dinamis memberikan stabilitas navigasi yang baik. Selain itu, eksekusi manipulasi objek dengan memanfaatkan tumbukan mekanis langsung (berbasis batas waktu _burst velocity_) menawarkan solusi interaksi fisik yang jauh lebih stabil dan realistis dibandingkan dengan penerapan gaya buatan melalui API secara langsung.
 
 #bibliography("references.bib", style: "ieee")
