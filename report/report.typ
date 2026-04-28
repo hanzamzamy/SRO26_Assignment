@@ -64,27 +64,12 @@ $ y_k = y_(k-1) + V_x sin(theta_"sim") Delta t $ <eq:y_abs>
 = Analisis Perbandingan Lintasan Spasial
 Profil lintasan selama simulasi 90 detik di-_plot_ ke dalam bidang kartesian 2D, menghasilkan tiga kurva spasial yang merepresentasikan ketiga metode pembacaan posisi.
 
-#figure(
-  image("odom_spatial.png", width: 80%),
-  caption: [Posisi X-Y P3DX metode odometri dan _ground truth_.],
-)
-
 #h(-1.8em) Berdasarkan _plot_ di atas, terdapat beberapa temuan krusial terkait sifat dasar odometri dan simulasi fisika.
 
 + *Perbedaan Titik Awal (_Reference Frame_):* Lintasan _Ground Truth_ (hitam) dimulai dari titik koordinat aktual bodi robot di dalam ruang simulasi absolut $(0.6, -0.125)$. Sebaliknya, kedua lintasan odometri (hijau dan biru) dimulai dari titik $(0, 0)$. Hal ini merepresentasikan sifat alami odometri yang bekerja pada kerangka referensi lokal (_relative frame_), di mana posisi dihitung relatif terhadap titik mula, bukan terhadap koordinat dunia nyata.
 + *Lintasan _Ground Truth_ (Hitam):* Lintasan ini menunjukkan posisi aktual (_center of mass_) robot di dalam simulasi CoppeliaSim. Terlihat bahwa robot bergerak menyusuri area di dalam kotak batas merah ($5 "m" times 5 "m"$) dan berhasil menghindari rintangan (dinding) secara konsisten pada jarak tertentu karena dipandu oleh algoritma Braitenberg.
 + *Deviasi Odometri Relatif (Hijau):* Lintasan hijau yang dikalkulasi murni dari integrasi putaran roda mengalami divergensi yang sangat parah. Karena roda robot mengalami slip fisik (slip translasi dan slip rotasi akibat tarikan _caster wheel_), kecepatan aktuator roda tidak 100% terkonversi menjadi pergerakan bodi. Eror kecil pada integrasi $omega$ (@eq:theta_rel) menyebabkan eror orientasi orientasi. Eror pada _heading_ ini terakumulasi terus menerus seiring waktu (_unbounded cumulative error_), membelokkan arah integrasi sumbu $X$ dan $Y$ hingga akhirnya lintasan bergeser secara masif.
 + *Koreksi Odometri Absolut (Biru):* Lintasan biru menggunakan orientasi yang sempurna ($theta_"sim"$). Akibatnya, profil lintasan biru memiliki bentuk pola haluan yang sangat mirip dan sejajar dengan lintasan _Ground Truth_. Hal ini membuktikan bahwa menghilangkan eror integrasi orientasi dapat secara signifikan menekan deviasi lintasan (_drift_). Meskipun demikian, masih terdapat deviasi linear dibandingkan lintasan _Ground Truth_. Hal ini disebabkan karena nilai ($V_x$) masih ditarik dari integrasi putaran roda yang mengalami slip, sehingga jarak tempuh robot menurut putaran roda sedikit berbeda dari jarak tempuh bodi fisiknya.
-
-#figure(
-  image("spatial_same_origin.png", width: 80%),
-  caption: [Posisi X-Y P3DX dengan titik awal sama $(0, 0)$.],
-)
-
-#figure(
-  image("spatial_different_orientation.png", width: 80%),
-  caption: [Posisi X-Y P3DX dengan titik awal sama, orientasi berbeda ($90degree$).],
-)
 
 Beberapa kasus tambahan juga dianalisis untuk memvalidasi temuan utama. Pada kasus pertama, semua lintasan di-_plot_ dengan titik awal yang sama $(0, 0)$ untuk menegaskan _drift_ pada metode odometri. Metode sudut absolut menunjukan hasil yang sangat mendekati lintasan _Ground Truth_, sementara metode sudut relatif tetap menunjukkan deviasi yang signifikan. Pada kasus kedua, orientasi awal dari semua metode disamakan ($90degree$) pada posisi awal $(0, 0)$ untuk menegaskan _relative frame_ dari odometri. Metode sudut relatif memiliki pose yang berbeda, yaitu sudut awal diasumsikan $0degree$, karena estimasi berdasarkan pada $omega_x$. Metode sudut absolut memiliki pose yang sama dengan lintasan _Ground Truth_ karena menggunakan orientasi aktual dari simulator.
 
