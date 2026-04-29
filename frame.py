@@ -137,8 +137,8 @@ try:
 
             sim.addLog(1, f"Sphere w.r.t. P3DX: ({sphere_pos_p3dx_frame[0, 0]:.2f}, {sphere_pos_p3dx_frame[1, 0]:.2f})")
 
-            Kp = 2.5
-            vx = Kp * (math.sqrt(sphere_pos_p3dx_frame[0, 0]**2 + sphere_pos_p3dx_frame[1, 0]**2) - 0.8)
+            Kp = 4.5
+            vx = Kp * (math.sqrt(sphere_pos_p3dx_frame[0, 0]**2 + sphere_pos_p3dx_frame[1, 0]**2) - 0.0)
             wx = Kp * math.atan2(sphere_pos_p3dx_frame[1, 0], sphere_pos_p3dx_frame[0, 0])
 
             wr = (vx + wx/2)
