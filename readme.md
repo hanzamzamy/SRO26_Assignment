@@ -26,3 +26,14 @@
     - Plot the $X-Y$ position of P3DX using orientation data.
     - Plot the $X-Y$ position of P3DX using angular velocity integration.
 - **Submission**: [GitHub Repository](https://github.com/hanzamzamy/SRO26_Assignment/tree/5)
+
+## Pioneer P3DX Soccer Game
+
+- **Date**: 22 April 2026
+- **Description**: 
+  - Using 3 robots to play soccer. Each robot has one role.
+    - Role 1: Goalkeeper (choose one goal).
+    - Role 2: Striker.
+    - Role 3: Participator, at least can move randomly.
+    Balls, robots, goals, and all objects data can be retrieved using API. Adding object for kicking mechanism is allowed.
+- **Submission**: [GitHub Repository](https://github.com/hanzamzamy/SRO26_Assignment/tree/midtest)
