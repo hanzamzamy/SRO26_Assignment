@@ -34,8 +34,8 @@
   [*Penulis*], [: Rayhan Rizqi Zamzamy],
   [*Dosen*], [: Muhammad Qomaruz Zaman, S.T., M.T., Ph.D.],
   [*Nama Kelas*], [: Sistem Robot Otonom],
-  [*Link video YouTube*], [: #link("https://youtu.be/xgot_TmPZvw")],
-  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Assignment/tree/5")]
+  [*Link video YouTube*], [: #link("https://youtu.be/DbYzQwSSMjk")],
+  [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Assignment/tree/b202_explode")]
 )
 #v(1.5cm)
 
