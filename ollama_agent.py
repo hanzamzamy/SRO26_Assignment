@@ -6,7 +6,6 @@ import ollama
 
 class OllamaNavigator:
     def __init__(self, config_file="config.json", memory_file="memory.json", model_name="gemma4:e2b"):
-        # You can change model_name to "llama3.2-vision" or "llava" if benchmarking others
         self.memory_file = memory_file
         self.model_name = model_name 
         self.last_target_object = None # Store the clean object name for verification
@@ -99,7 +98,7 @@ class OllamaNavigator:
         """
         
         try:
-            # We enforce JSON format natively through Ollama
+            # Enforce JSON format natively through Ollama
             response = ollama.chat(
                 model=self.model_name,
                 messages=[{
@@ -111,7 +110,7 @@ class OllamaNavigator:
             
             raw_content = response['message']['content'].strip()
             
-            # 1. Isolate the JSON block (ignores conversational babble before/after)
+            # Isolate the JSON block (ignores conversational babble before/after)
             start_idx = raw_content.find('{')
             end_idx = raw_content.rfind('}')
             
@@ -119,10 +118,10 @@ class OllamaNavigator:
                 raw_content = raw_content[start_idx:end_idx+1]
             
             try:
-                # 2. Try standard strict JSON parsing
+                # Try standard strict JSON parsing
                 result = json.loads(raw_content)
             except json.JSONDecodeError as e:
-                # 3. Fallback: If the model stubbornly used single quotes, it's a Python dict format.
+                # Fallback: If the model stubbornly used single quotes, it's a Python dict format.
                 # json.loads() fails on single quotes, but ast.literal_eval parses them perfectly.
                 try:
                     python_str = raw_content.replace('null', 'None').replace('true', 'True').replace('false', 'False')

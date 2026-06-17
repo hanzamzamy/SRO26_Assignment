@@ -108,7 +108,7 @@ class GeminiNavigator:
 
     def verify_target_presence(self, pil_image, target_name):
         """Phase 2: Validates if the target actually exists at the coordinates."""
-        # OVERRIDE: Use the cleanly extracted object name instead of the raw user prompt
+        # Use the cleanly extracted object name instead of the raw user prompt
         actual_target = getattr(self, 'last_target_object', target_name)
         
         prompt = self.config['verification_prompt'].replace("{target}", actual_target)

@@ -9,7 +9,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-# LOAD DOTENV FIRST before doing anything else
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -20,13 +19,11 @@ from tracker import PurePursuitTracker
 from llm_agent import GeminiNavigator
 # from ollama_agent import OllamaNavigator
 
-# --- CLI ARGUMENT PARSER (FOR GRADING HARNESS) ---
 parser = argparse.ArgumentParser(description="P3DX Autonomous Semantic Agent")
 parser.add_argument('--mode', type=str, default='demo', choices=['demo', 'harness'], help="Run mode")
 parser.add_argument('--state', type=str, help="State JSON string (Harness mode)")
 args = parser.parse_args()
 
-# HARNESS MODE EXECUTION (1-shot API test for the grader)
 if args.mode == 'harness':
     if not args.state:
         print(json.dumps({"error": "--state argument required for harness mode."}))
@@ -37,10 +34,6 @@ if args.mode == 'harness':
     result = agent.get_execution_target(args.state)
     print(json.dumps({"action": "PRESET_OPEN_LOOP_TARGET", "payload": result}))
     sys.exit(0)
-
-# =======================================================================
-# === DEMO MODE EXECUTION (Full Closed-Loop Orchestrator) ===============
-# =======================================================================
 
 # Load configuration rules
 with open("config.json", "r") as f:
@@ -149,7 +142,6 @@ snapshot_markers = []
 verification_markers = [] 
 current_target_name = ""
 
-# Auto.py Stuck Escaping Tracking Variables
 last_pos = (0, 0)
 last_pos_time = time.time()
 loop_counter = 0
@@ -235,11 +227,11 @@ try:
             grid_path = None
             binary_map = my_map.get_binary_map()
             
-            # --- TIER 1: Macro Sweep (Your Original Dummy Point) ---
+            # --- TIER 1: Macro Sweep ---
             active_target_idx = EXPLORATION_TARGET
             grid_path = planner.plan(binary_map, current_grid_idx, active_target_idx)
             
-            # --- TIER 2: Deep Search Tool (Frontiers) ---
+            # --- TIER 2: Deep Search Tool ---
             # Activates when the dummy point becomes unreachable (room is walled off)
             if not grid_path:
                 print("[SLAM] Primary sweep complete. Initiating Deep Search on frontiers...")
