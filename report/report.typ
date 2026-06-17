@@ -34,7 +34,8 @@
   [*Penulis*], [: Rayhan Rizqi Zamzamy],
   [*Dosen*], [: Muhammad Qomaruz Zaman, S.T., M.T., Ph.D.],
   [*Nama Kelas*], [: Sistem Robot Otonom],
-  [*Link video YouTube*], [: #link("https://youtu.be/_undvDP7nWw") \ #link("https://youtu.be/hFe5IIcUWlc") ],
+  [*Link video YouTube*], [: #link("https://youtu.be/_undvDP7nWw")],
+  [], [#hide()[: ] #link("https://youtu.be/hFe5IIcUWlc")],
   [*Link GitHub*], [: #link("https://github.com/hanzamzamy/SRO26_Assignment/tree/fp")]
 )
 
@@ -52,19 +53,19 @@ Pemodelan dan analisis kinematika robot didasarkan pada literatur standar roboti
 Pemetaan dilakukan menggunakan 9 buah sensor ultrasonik bagian depan P3DX. Ruang simulasi didiskritisasi menjadi _grid_ 2D beresolusi $0.1 "m/sel"$. Pembaruan probabilitas keberadaan rintangan menggunakan pendekatan _log-odds_ untuk menghindari _underflow_ numerik.
 
 Transformasi koordinat pantulan sensor ($p_S$) dari kerangka lokal sensor ke kerangka dunia absolut ($p_W$) didefinisikan sebagai,
-$p_W = ""^W T_B dot ""^B T_S dot p_S$ <eq:transform>
+$ p_W = ""^W T_B dot ""^B T_S dot p_S $ <eq:transform>
 #h(-1.8em)Dimana $""^W T_B$ adalah matriks transformasi dari koordinat dunia ke bodi robot, dan $""^B T_S$ adalah transformasi dari bodi ke sensor. Pembaruan probabilitas menggunakan algoritma garis Bresenham dan model _inverse sensor_ Bayesian klasik.
 
 == Perencanaan Jalur Jarak Terpendek (A\* dengan _Gradient Costmap_)
 Peta diekspansi (_inflation_) membentuk _gradient costmap_ secara sirkular. Radius fisik robot ($r_"lethal" = 0.3 "m"$) diberi nilai penalti $100.0$, merepresentasikan tidak dapat dilewati. Area penyangga keamanan ($r_"risk" = 0.5 "m"$) diberikan penalti yang menurun secara linear. Algoritma A\* meminimalkan fungsi biaya total $f(n) = g(n) + h(n) + (C_"risk" times 2.0)$, memaksa robot merencanakan jalur di tengah ruangan terbuka.
 
 == Pelacakan Jalur (_Pure Pursuit_ dengan _Point-Turn_)
-Pengontrol _pure pursuit_ dimodifikasi dengan penambahan batas toleransi putar-di-tempat (_point-turn_) untuk mengatasi rintangan tajam. Kecepatan sudut rotasi robot ($omega$) dikalkulasi secara proporsional terhadap kelengkungan $gamma$. Jika target berada pada sudut tajam di atas 0.6 radian, robot akan berputar di tempat sebelum maju.
+Pengontrol _pure pursuit_ dimodifikasi dengan penambahan batas toleransi putar-di-tempat (_point-turn_) untuk mengatasi rintangan tajam. Kecepatan sudut rotasi robot ($omega$) dikalkulasi secara proporsional terhadap kelengkungan $gamma$. Jika target berada pada sudut tajam > 0.6 radian, robot akan melakukan _point-turn_.
 
 == Arsitektur Semantic SLAM dan Vision-Language Model
-Sistem ini menggunakan VLM untuk memproses informasi visual dan tekstual, terbagi dalam dua fase utama:
+Sistem ini menggunakan VLM untuk memproses informasi visual dan tekstual, terbagi dalam dua fase utama.
 
-1. *Fase Eksplorasi Berjenjang (Macro & Frontier):* Robot memadukan dua strategi. Pertama, eksplorasi makro dengan menargetkan titik jauh di luar peta untuk memaksa sapuan jarak jauh. Ketika ruangan telah tertutup (_sealed map_), robot beralih ke _Frontier Exploration_, secara matematis mencari sel matriks yang berbatasan antara area bebas dan area belum terpetakan. Selama fase ini, gambar dari kamera diproses oleh VLM untuk diekstrak menjadi _landmark_ dan disimpan dalam JSON memori spasial berserta koordinat dan orientasinya (_yaw_).
+1. *Fase Eksplorasi Berjenjang (_Macro_ & _Frontier_):* Robot memadukan dua strategi. Pertama, eksplorasi makro dengan menargetkan titik jauh di luar peta untuk memaksa sapuan jarak jauh. Ketika ruangan telah tertutup (_sealed map_), robot beralih ke _Frontier Exploration_, secara matematis mencari sel matriks yang berbatasan antara area bebas dan area belum terpetakan. Selama fase ini, gambar dari kamera diproses oleh VLM untuk diekstrak menjadi _landmark_ dan disimpan dalam JSON memori spasial berserta koordinat dan orientasinya (_yaw_).
 2. *Fase Eksekusi (NLP & Verifikasi Visual):* Perintah bahasa alami dari pengguna (misal: "Hampiri meja bundar") diproses oleh VLM untuk mengekstraksi niat (_intent_) dan objek target murni. Robot mencari target di memori, merutekan koordinat aman menggunakan fungsi _Safe Parking Area_ agar tidak menabrak rintangan, dan terakhir memverifikasi kembali secara visual (`verify_target_presence`) setelah tiba di lokasi.
 
 = Implementasi dan Pengujian Sistem
@@ -91,29 +92,19 @@ Implementasi antarmuka _matplotlib_ bersifat interaktif, menunjukkan status _sta
   caption: [Kiri: Jalur A\* awal yang direncanakan. Kanan: Jalur A\* yang diperbarui secara dinamis saat menemui rintangan tak terpetakan (_live replanning_).],
 ) <fig:shortest_path>
 
-== Pengujian Semantic SLAM (VLM)
+== Pengujian _Semantic SLAM_ (VLM)
 Pengujian fase logik semantik membuktikan robot mampu memadukan _machine vision_ dengan _natural language processing_ (NLP).
 #figure(
-  rect(width: 80%, height: 4cm, fill: luma(240))[
-    #align(center + horizon)[
-      _(Ganti dengan Screenshot Video: Terminal menampilkan memori objek tercatat saat eksplorasi)_
-    ]
-  ],
-  caption: [Proses logging memori. Robot secara otomatis memindai gambar dan menyimpannya ke basis data spasial.],
+  image("logging_memory.png", width: 60%),
+  caption: [Proses _logging_ memori. Robot secara otomatis memindai gambar dan menyimpannya ke basis data spasial.],
 ) <fig:memory_log>
 
 Sistem memecahkan masalah navigasi klasik (di mana menugaskan robot ke koordinat objek akan membuatnya menabrak benda tersebut) dengan fungsi kalkulasi _Nearest Safe Cell_. Ini memastikan bahwa A\* mengarahkan robot untuk parkir dengan aman di sebelah rintangan (titik terdekat berpenalti rendah).
 
 #figure(
-  rect(width: 80%, height: 4cm, fill: luma(240))[
-    #align(center + horizon)[
-      _(Ganti dengan Screenshot Video: Proses Chatbot & Verifikasi visual 'SUCCESS')_
-    ]
-  ],
+  image("nlp_exec.png", width: 60%),
   caption: [Robot menerima perintah dalam bahasa alami, mengekstrak objek, melakukan perjalanan ke sel teraman, dan memverifikasi keberadaan target dengan kamera sebelum berhenti.],
 ) <fig:verification>
-
-Selain pengujian _closed-loop_, agen robot ini mendukung pengujian _open-loop_ berbasis CLI (`--mode harness`) yang menerima input _string_ parameter JSON, memungkinkan _grading_ otomatis oleh mesin tanpa mengganggu antarmuka simulasi grafis.
 
 = Kesimpulan
 Sistem navigasi otonom yang dikembangkan telah berevolusi dari sekadar pemetaan rintangan menjadi _Semantic SLAM_ kognitif tertutup. Kombinasi dari eksplorasi _macro_ dan _frontier_ menjamin efisiensi penjelajahan lingkungan tertutup, sementara inflasi _gradient costmap_ pada A\* berhasil menavigasi robot melintasi masalah lorong sempit (_narrow passages_). Puncak dari sistem ini adalah integrasi _Vision-Language Model_ yang mengubah robot menjadi asisten spasial, yang tidak hanya menyadari hambatan fisik di sekitarnya, tetapi juga memahami makna dan nama dari objek-objek tersebut secara alami.
