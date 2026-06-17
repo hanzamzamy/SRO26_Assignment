@@ -1,0 +1,564 @@
+{
+  "spatial_memory": [
+    {
+      "grid_idx": [
+        174,
+        56
+      ],
+      "yaw": 1.070807789736675,
+      "view": "The room features rows of table-and-chair sets with yellow seats, alongside structures with red accents on white walls."
+    },
+    {
+      "grid_idx": [
+        175,
+        57
+      ],
+      "yaw": 2.1216816198224473,
+      "view": "The room features tables with yellow seats, wooden chairs, and a red lamp, highlighting functional objects and distinct color accents."
+    },
+    {
+      "grid_idx": [
+        163,
+        67
+      ],
+      "yaw": 1.042654124609013,
+      "view": "The room features large white tables with yellow seating, red table lamps, and minimalistic desk-like structures."
+    },
+    {
+      "grid_idx": [
+        165,
+        68
+      ],
+      "yaw": -0.01028513289355558,
+      "view": "The room contains a metal table with wooden chairs, brown storage cabinets, and gray walls."
+    },
+    {
+      "grid_idx": [
+        179,
+        69
+      ],
+      "yaw": 1.0444326387322211,
+      "view": "The room features rows of wooden chairs with yellow seats beside a long counter with a white surface, accented by red objects."
+    },
+    {
+      "grid_idx": [
+        179,
+        99
+      ],
+      "yaw": 1.5726500421815177,
+      "view": "The room features red chairs, black monitors, wooden shelving with yellow and green elements, set against a plain gray backdrop."
+    },
+    {
+      "grid_idx": [
+        171,
+        128
+      ],
+      "yaw": 2.4106142604896514,
+      "view": "The room features a white table accompanied by a red office chair, set against neutral-colored walls and checkered flooring."
+    },
+    {
+      "grid_idx": [
+        145,
+        143
+      ],
+      "yaw": 2.3348554407867184,
+      "view": "The room contains workstations in white tones with digital displays, defined by neutral-colored structural elements and functional design features."
+    },
+    {
+      "grid_idx": [
+        136,
+        171
+      ],
+      "yaw": 1.2780534928019287,
+      "view": "The room contains a brown cabinet and checkered tile patterns in light beige tones."
+    },
+    {
+      "grid_idx": [
+        139,
+        190
+      ],
+      "yaw": 0.2250372425959137,
+      "view": "The room contains blue chairs arranged near a desk, with prominent brown partitioning and neutral wall tones."
+    },
+    {
+      "grid_idx": [
+        154,
+        188
+      ],
+      "yaw": -0.8222839510874721,
+      "view": "The room features rows of blue chairs arranged for seating, emphasizing organized furniture with distinct blue tones."
+    },
+    {
+      "grid_idx": [
+        159,
+        179
+      ],
+      "yaw": -1.8885247675623984,
+      "view": "The room features a small brown rectangular object and a checkered tile pattern with light-and-dark squares."
+    },
+    {
+      "grid_idx": [
+        138,
+        157
+      ],
+      "yaw": -1.7868469202816826,
+      "view": "The room holds a brown box, a checkered white-and-gray floor, and light gray walls that define its simple layout."
+    },
+    {
+      "grid_idx": [
+        139,
+        127
+      ],
+      "yaw": -1.5717582835407486,
+      "view": "The room displays yellow chairs around a light table, a tall brown cabinet, and a checkered tiled space."
+    },
+    {
+      "grid_idx": [
+        146,
+        98
+      ],
+      "yaw": -1.877161969460304,
+      "view": "The room features a brown cabinet next to a light gray wall with checkered tile flooring."
+    },
+    {
+      "grid_idx": [
+        146,
+        74
+      ],
+      "yaw": -0.7871622938204923,
+      "view": "The room shows a light-checkered tile pattern with brown structural objects against gray walls."
+    },
+    {
+      "grid_idx": [
+        145,
+        73
+      ],
+      "yaw": 0.30072807034520316,
+      "view": "The room features tables with yellow cushioned seats and chairs with brown frames, creating a distinct object arrangement."
+    },
+    {
+      "grid_idx": [
+        147,
+        75
+      ],
+      "yaw": 1.3512331241135405,
+      "view": "The room features tables with yellow seats holding red hats and a laptop, surrounded by wooden chairs."
+    },
+    {
+      "grid_idx": [
+        147,
+        105
+      ],
+      "yaw": 1.4422984844077682,
+      "view": "The room features red office chairs beside a metal table with a checkered light-and-dark checkered floor."
+    },
+    {
+      "grid_idx": [
+        148,
+        135
+      ],
+      "yaw": 1.4131980420051247,
+      "view": "The room features checkered tile patterns, a vertical brown object, light gray walls, and a dark ceiling."
+    },
+    {
+      "grid_idx": [
+        157,
+        164
+      ],
+      "yaw": 0.5862531743174197,
+      "view": "The room features blue chairs, a small table with minimal items, and a brown door or panel."
+    },
+    {
+      "grid_idx": [
+        158,
+        165
+      ],
+      "yaw": -0.4701811656497846,
+      "view": "The room contains blue seating furniture arranged linearly against gray walls with a black ceiling, highlighting distinct objects and structural elements."
+    },
+    {
+      "grid_idx": [
+        158,
+        165
+      ],
+      "yaw": -1.5214643168638864,
+      "view": "The room contains standard furniture like tables and chairs, with neutral tones and distinct structural landmarks such as windows and doorways."
+    },
+    {
+      "grid_idx": [
+        152,
+        136
+      ],
+      "yaw": -1.0654223597037988,
+      "view": "The room features rectangular tables with metallic tops and chairs with yellow seat cushions and wooden frames, forming a structured layout of identifiable objects."
+    },
+    {
+      "grid_idx": [
+        159,
+        132
+      ],
+      "yaw": -0.016913669061203628,
+      "view": "The room contains a white table with red chairs, surrounded by setups of tables and seats in yellow and grey tones."
+    },
+    {
+      "grid_idx": [
+        174,
+        135
+      ],
+      "yaw": 1.0341713165458286,
+      "view": "The room features red, abstract-shaped objects placed on a white surface, serving as distinct landmarks and emphasizing its primary colors."
+    },
+    {
+      "grid_idx": [
+        175,
+        143
+      ],
+      "yaw": -0.01748349959056363,
+      "view": "The room features red seating, a gray laptop on a white table, and light-colored walls that highlight identifiable objects."
+    },
+    {
+      "grid_idx": [
+        175,
+        143
+      ],
+      "yaw": -1.1018874315261835,
+      "view": "The room displays light-colored railings, yellow furnishings, and brown and gray structural elements that define its indoor layout."
+    },
+    {
+      "grid_idx": [
+        181,
+        132
+      ],
+      "yaw": -0.049254115289507606,
+      "view": "The room features a white table, a chair with a yellow seat, and a brown panel, set against neutral-toned walls."
+    },
+    {
+      "grid_idx": [
+        198,
+        135
+      ],
+      "yaw": 1.003238873948211,
+      "view": "The room features a white table holding a red object, surrounded by gray walls."
+    },
+    {
+      "grid_idx": [
+        199,
+        142
+      ],
+      "yaw": 2.0622995460690494,
+      "view": "The room features a distinct red object and neutral-colored surroundings, highlighting identifiable elements for navigation."
+    },
+    {
+      "grid_idx": [
+        199,
+        142
+      ],
+      "yaw": 3.130267962615055,
+      "view": "The room contains red geometric objects, a gray structural element, and a small brown box set against white space, highlighting distinct items and color contrasts."
+    },
+    {
+      "grid_idx": [
+        198,
+        142
+      ],
+      "yaw": -2.094982164365234,
+      "view": "The room features white structural elements with tables and yellow-colored chairs arranged in rows, indicating a functional seating or dining area."
+    },
+    {
+      "grid_idx": [
+        198,
+        135
+      ],
+      "yaw": -1.0425614961870975,
+      "view": "The room contains wooden chairs with yellow seats and a white table, set in a space with neutral-colored surroundings."
+    },
+    {
+      "grid_idx": [
+        204,
+        131
+      ],
+      "yaw": 0.0071602378882182245,
+      "view": "The room features large, neutral-toned structures with identifiable objects in various shades, suggesting functional or industrial elements."
+    },
+    {
+      "grid_idx": [
+        209,
+        133
+      ],
+      "yaw": 1.0623966412592312,
+      "view": "The room features a small red object and gray-colored spaces, highlighting a distinct red landmark."
+    },
+    {
+      "grid_idx": [
+        210,
+        143
+      ],
+      "yaw": -0.016777477208310316,
+      "view": "The room features identifiable objects like storage units and decor in neutral tones with subtle accent colors."
+    },
+    {
+      "grid_idx": [
+        210,
+        143
+      ],
+      "yaw": -1.0718457885435475,
+      "view": "The room features a plain gray wall and a simple brown object, creating a minimalist and functional space with neutral tones."
+    },
+    {
+      "grid_idx": [
+        209,
+        135
+      ],
+      "yaw": -2.1234605319449202,
+      "view": "The room contains rows of table-and-chair sets with light-colored tables and yellow seat cushions, creating a structured arrangement of functional furniture."
+    },
+    {
+      "grid_idx": [
+        193,
+        125
+      ],
+      "yaw": 3.1014840960505903,
+      "view": "The room displays tables with yellow seats and white tabletops, arranged around a checkered floor that outlines its navigable space."
+    },
+    {
+      "grid_idx": [
+        180,
+        120
+      ],
+      "yaw": -2.1242442336950536,
+      "view": "The room features rows of wooden chairs with yellow seats along a long white table against plain gray walls."
+    },
+    {
+      "grid_idx": [
+        178,
+        90
+      ],
+      "yaw": -1.5712072990322834,
+      "view": "The room contains yellow-accented chairs, a brown storage unit, and checks in its tiled floor against neutral walls."
+    },
+    {
+      "grid_idx": [
+        170,
+        61
+      ],
+      "yaw": -2.0142579331045485,
+      "view": "The room features a brown table with white legs and red chairs positioned nearby."
+    },
+    {
+      "grid_idx": [
+        158,
+        44
+      ],
+      "yaw": -3.0734627491242184,
+      "view": "The room features a red office chair positioned in front of a simple wooden table holding a closed laptop, creating a clear workspace setup."
+    },
+    {
+      "grid_idx": [
+        146,
+        47
+      ],
+      "yaw": -2.0038920865344627,
+      "view": "The room contains a beige table with a gray laptop and a prominent red object, defining key identifiable elements in the space."
+    },
+    {
+      "grid_idx": [
+        144,
+        31
+      ],
+      "yaw": -0.9445402803252678,
+      "view": "The room features functional furniture and informational signs set against neutral-colored walls, emphasizing its purpose for navigation and object identification."
+    },
+    {
+      "grid_idx": [
+        173,
+        26
+      ],
+      "yaw": -0.03834001897002846,
+      "view": "The room contains brown storage boxes, a checkered light-and-dark tile floor, and gray walls."
+    },
+    {
+      "grid_idx": [
+        204,
+        26
+      ],
+      "yaw": -0.005179412414646065,
+      "view": "The room features a brown pillar set against gray walls, highlighting its color and presence as a key landmark."
+    },
+    {
+      "grid_idx": [
+        210,
+        27
+      ],
+      "yaw": -1.0826997783179728,
+      "view": "The room features typical furnishings in neutral tones alongside functional landmarks for navigation."
+    },
+    {
+      "grid_idx": [
+        210,
+        27
+      ],
+      "yaw": -2.1501531322574703,
+      "view": "The room is defined by functional furniture such as desks and seating arranged in neutral tones, emphasizing distinct object separations for navigation."
+    },
+    {
+      "grid_idx": [
+        208,
+        26
+      ],
+      "yaw": 3.0763456526673787,
+      "view": "The room features a checkered white-and-gray floor, a brown structural piece, and a distant dark table with a chair."
+    },
+    {
+      "grid_idx": [
+        179,
+        29
+      ],
+      "yaw": 3.1384075397490845,
+      "view": "The room features a dark table with a computer and a red office chair, surrounded by neutral tones and light-colored flooring."
+    },
+    {
+      "grid_idx": [
+        168,
+        32
+      ],
+      "yaw": 2.084390883888288,
+      "view": "The room contains a red office chair, a brown table with a gray laptop, and simple background structures."
+    },
+    {
+      "grid_idx": [
+        168,
+        43
+      ],
+      "yaw": 1.0284279509719405,
+      "view": "The room features rows of wooden chairs with yellow seats arranged around white tables, illuminated by a red lamp, creating a functional and orderly space."
+    },
+    {
+      "grid_idx": [
+        189,
+        64
+      ],
+      "yaw": 0.613879862732167,
+      "view": "The room contains wooden chairs with yellow seats and a white table, establishing a clear functional space for dining or seating."
+    },
+    {
+      "grid_idx": [
+        200,
+        70
+      ],
+      "yaw": -0.43879407793415753,
+      "view": "The room features large brown rectangular objects, neutral-toned tiled surfaces, and gray wall spaces."
+    },
+    {
+      "grid_idx": [
+        207,
+        70
+      ],
+      "yaw": 0.6126212199707922,
+      "view": "The room features distinct objects like storage units and workspaces, defined by a mix of neutral tones and accent colors that establish its indoor environment."
+    },
+    {
+      "grid_idx": [
+        210,
+        78
+      ],
+      "yaw": 1.6727315926637782,
+      "view": "The room contains long tables with yellow chairs, red lamp stands, and a laptop, primarily in white and brown tones."
+    },
+    {
+      "grid_idx": [
+        210,
+        108
+      ],
+      "yaw": 1.592187753430725,
+      "view": "The room features red chairs with lamp accents, a wooden chair with yellow seats, checkered tiles, and a brown structural feature."
+    },
+    {
+      "grid_idx": [
+        210,
+        111
+      ],
+      "yaw": 2.665689979646901,
+      "view": "The room contains a large white table, red-colored furniture or objects, with visible wooden accents."
+    },
+    {
+      "grid_idx": [
+        210,
+        111
+      ],
+      "yaw": -2.4960312174142434,
+      "view": "The room features tables with white surfaces and chairs with green seats and brown frames."
+    },
+    {
+      "grid_idx": [
+        209,
+        106
+      ],
+      "yaw": -1.4480640514350955,
+      "view": "The room showcases a white table accompanied by wooden chairs with yellow seat cushions, emphasizing notable objects and distinct colors."
+    },
+    {
+      "grid_idx": [
+        210,
+        76
+      ],
+      "yaw": -1.5942209083628918,
+      "view": "The room features a checkered checkered-tiled surface and a long brown structural element, with dominant colors of white, gray, and brown."
+    },
+    {
+      "grid_idx": [
+        213,
+        51
+      ],
+      "yaw": -2.6575761240760754,
+      "view": "The room contains brown cube-shaped structures, red seating, a checkered checkered floor, and distant red machinery elements."
+    },
+    {
+      "grid_idx": [
+        210,
+        52
+      ],
+      "yaw": 2.5637916481541048,
+      "view": "The room features tables with yellow chairs, partitioned areas, and a checkered pattern, emphasizing organized functional design."
+    },
+    {
+      "grid_idx": [
+        186,
+        69
+      ],
+      "yaw": 2.7962643797003244,
+      "view": "The room contains white tables accompanied by chairs with yellow seat cushions and wooden frames, creating a clear setup of functional furniture."
+    },
+    {
+      "grid_idx": [
+        178,
+        76
+      ],
+      "yaw": 1.7417966469087502,
+      "view": "The room features red lampshades, wooden structural elements, and a checkered pattern of light and neutral tones, highlighting identifiable objects like lights and furniture."
+    },
+    {
+      "grid_idx": [
+        178,
+        106
+      ],
+      "yaw": 1.5705219727757265,
+      "view": "The room features rows of red office chairs with black monitors, set against a neutral, checkered-colored space."
+    },
+    {
+      "grid_idx": [
+        174,
+        136
+      ],
+      "yaw": 1.5327263702830707,
+      "view": "The room contains a distinct red object, like a character, set against a neutral background, highlighting key landmarks for navigation."
+    },
+    {
+      "grid_idx": [
+        177,
+        147
+      ],
+      "yaw": 0.4840541513892686,
+      "view": "The room features prominent red objects, such as a hand-like structure, set against a neutral backdrop."
+    }
+  ]
+}

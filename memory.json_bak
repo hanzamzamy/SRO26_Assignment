@@ -1,0 +1,556 @@
+{
+  "spatial_memory": [
+    {
+      "grid_idx": [
+        174,
+        56
+      ],
+      "yaw": 1.0590194804289639,
+      "view": "A row of wooden chairs with light green cushions lines the interior of the room."
+    },
+    {
+      "grid_idx": [
+        175,
+        56
+      ],
+      "yaw": 2.1315277991373707,
+      "view": "The room features rows of wooden tables with light yellow seats set against light gray walls."
+    },
+    {
+      "grid_idx": [
+        163,
+        65
+      ],
+      "yaw": 1.0622391876770403,
+      "view": "The room contains rows of wooden tables and light yellow cushioned benches."
+    },
+    {
+      "grid_idx": [
+        164,
+        66
+      ],
+      "yaw": 0.003357272223029399,
+      "view": "A line of wooden chairs with light seats is visible against a plain brown background."
+    },
+    {
+      "grid_idx": [
+        178,
+        68
+      ],
+      "yaw": 1.059506385415489,
+      "view": "Rows of wooden chairs with light green seats extend down a hallway."
+    },
+    {
+      "grid_idx": [
+        179,
+        98
+      ],
+      "yaw": 1.5891627654803813,
+      "view": "The room contains several wooden chair frames and scattered red circular objects arranged along the path."
+    },
+    {
+      "grid_idx": [
+        171,
+        127
+      ],
+      "yaw": 2.4110681603139503,
+      "view": "The scene features a white table and a red chair set against gray walls."
+    },
+    {
+      "grid_idx": [
+        145,
+        143
+      ],
+      "yaw": 2.3327818761299732,
+      "view": "The area is defined by light gray geometric lines creating sharp angles."
+    },
+    {
+      "grid_idx": [
+        136,
+        171
+      ],
+      "yaw": 1.2846156252064116,
+      "view": "The room features plain light-colored walls and a contrasting dark brown structure."
+    },
+    {
+      "grid_idx": [
+        140,
+        189
+      ],
+      "yaw": 0.23654190904254552,
+      "view": "The room contains several blue chairs and a dark brown table."
+    },
+    {
+      "grid_idx": [
+        159,
+        184
+      ],
+      "yaw": -0.8155140200142067,
+      "view": "The room is filled with numerous light blue chairs arranged in rows."
+    },
+    {
+      "grid_idx": [
+        161,
+        182
+      ],
+      "yaw": -1.8639755970802658,
+      "view": "A small brown rectangular object and a blue mobile robot are visible in the room."
+    },
+    {
+      "grid_idx": [
+        140,
+        161
+      ],
+      "yaw": -2.1760505408592024,
+      "view": "A narrow vertical boundary meets a large, smooth, light-colored surface."
+    },
+    {
+      "grid_idx": [
+        139,
+        131
+      ],
+      "yaw": -1.5698550584242512,
+      "view": "A line of wooden chairs is visible in the indoor space."
+    },
+    {
+      "grid_idx": [
+        147,
+        102
+      ],
+      "yaw": -1.6131775845907446,
+      "view": "The room features wooden furniture and a prominent brown wooden partition wall."
+    },
+    {
+      "grid_idx": [
+        147,
+        74
+      ],
+      "yaw": -2.676115214377202,
+      "view": "The room is a uniform brown-gray expanse marked by a horizontal line."
+    },
+    {
+      "grid_idx": [
+        147,
+        73
+      ],
+      "yaw": 2.516461803832273,
+      "view": "The room features large expanses of uniform, muted gray and brown surfaces."
+    },
+    {
+      "grid_idx": [
+        146,
+        79
+      ],
+      "yaw": 1.4685710955665026,
+      "view": "A row of light wooden chairs with red accents lines a corridor between pale walls."
+    },
+    {
+      "grid_idx": [
+        147,
+        109
+      ],
+      "yaw": 1.4163866760020702,
+      "view": "Several red objects are displayed on metal stands within the room."
+    },
+    {
+      "grid_idx": [
+        149,
+        139
+      ],
+      "yaw": 1.2247738779021078,
+      "view": "A light brown rectangular frame stands against a plain light gray wall."
+    },
+    {
+      "grid_idx": [
+        158,
+        162
+      ],
+      "yaw": 2.300366344339619,
+      "view": "The room features plain light gray surfaces and a vertical division separating the space."
+    },
+    {
+      "grid_idx": [
+        155,
+        163
+      ],
+      "yaw": -2.9295734201270722,
+      "view": "The visible area features light-colored geometric patterns on the ground."
+    },
+    {
+      "grid_idx": [
+        147,
+        154
+      ],
+      "yaw": -1.871224293400643,
+      "view": "The room contains a wooden cabinet and a large tan rectangular object."
+    },
+    {
+      "grid_idx": [
+        152,
+        135
+      ],
+      "yaw": -0.8239811186609444,
+      "view": "The room contains numerous wooden desks and chairs with light green tabletops."
+    },
+    {
+      "grid_idx": [
+        172,
+        132
+      ],
+      "yaw": 0.2325777228974196,
+      "view": "A table with a red item and dark objects is visible in the indoor space."
+    },
+    {
+      "grid_idx": [
+        176,
+        135
+      ],
+      "yaw": 1.2879965509713662,
+      "view": "A large reddish-orange object occupies the foreground on a light gray surface."
+    },
+    {
+      "grid_idx": [
+        175,
+        141
+      ],
+      "yaw": 2.3379529426474597,
+      "view": "A reddish-orange, rounded object is visible against a plain light gray environment."
+    },
+    {
+      "grid_idx": [
+        175,
+        142
+      ],
+      "yaw": -2.897974911239835,
+      "view": "A brown rectangular object is visible in the corner of the gray room."
+    },
+    {
+      "grid_idx": [
+        175,
+        141
+      ],
+      "yaw": -1.8468907039728886,
+      "view": "Rows of wooden desks with yellow cushions line the space."
+    },
+    {
+      "grid_idx": [
+        177,
+        134
+      ],
+      "yaw": -0.7927790520995173,
+      "view": "A row of wooden chairs with light green seats is positioned against a gray background."
+    },
+    {
+      "grid_idx": [
+        183,
+        131
+      ],
+      "yaw": 0.2591206299322409,
+      "view": "The room features a light-colored table with a red object positioned next to a large brown background structure."
+    },
+    {
+      "grid_idx": [
+        199,
+        136
+      ],
+      "yaw": 1.315349193919679,
+      "view": "A large, reddish-orange, amorphous object is positioned in a neutral gray room."
+    },
+    {
+      "grid_idx": [
+        199,
+        141
+      ],
+      "yaw": 2.3868419513524084,
+      "view": "Two distinct red, irregularly shaped objects are visible in the indoor facility."
+    },
+    {
+      "grid_idx": [
+        199,
+        142
+      ],
+      "yaw": -2.809563855589059,
+      "view": "The room contains light brown wooden shelving on the left, a dark surface, and a red object on the right."
+    },
+    {
+      "grid_idx": [
+        198,
+        140
+      ],
+      "yaw": -1.7590338731897863,
+      "view": "Numerous wooden benches with light-colored cushions are arranged in parallel rows."
+    },
+    {
+      "grid_idx": [
+        200,
+        133
+      ],
+      "yaw": -0.7019705358022275,
+      "view": "The interior features a large expanse of brown surface meeting a light gray geometric structure."
+    },
+    {
+      "grid_idx": [
+        206,
+        131
+      ],
+      "yaw": 0.3477962956444178,
+      "view": "The room is defined by large, uniform surfaces in muted brown and gray tones."
+    },
+    {
+      "grid_idx": [
+        210,
+        135
+      ],
+      "yaw": 1.4003390065009806,
+      "view": "A small red object is visible against the light gray walls of the room."
+    },
+    {
+      "grid_idx": [
+        210,
+        143
+      ],
+      "yaw": 0.328351692136859,
+      "view": "The room is a uniform gray color with a small, light rectangular structure visible in the corner."
+    },
+    {
+      "grid_idx": [
+        210,
+        143
+      ],
+      "yaw": -0.720229555894415,
+      "view": "The visible area is dominated by a large, uniform surface of earthy brown color."
+    },
+    {
+      "grid_idx": [
+        210,
+        138
+      ],
+      "yaw": -1.7677090801766744,
+      "view": "A row of light-colored tables and chairs with yellow seats lines a corridor in the indoor facility."
+    },
+    {
+      "grid_idx": [
+        196,
+        125
+      ],
+      "yaw": -2.818421709771597,
+      "view": "The room features several wooden tables and wooden chairs with green seating."
+    },
+    {
+      "grid_idx": [
+        178,
+        119
+      ],
+      "yaw": -1.7674430837507689,
+      "view": "Rows of wooden chairs with light cushions line a hallway."
+    },
+    {
+      "grid_idx": [
+        178,
+        89
+      ],
+      "yaw": -1.5702853151455176,
+      "view": "The room contains a large brown rectangular structure and light brown wooden furniture."
+    },
+    {
+      "grid_idx": [
+        170,
+        60
+      ],
+      "yaw": -1.9306858220904328,
+      "view": "A brown table and a red object are visible in the room."
+    },
+    {
+      "grid_idx": [
+        158,
+        44
+      ],
+      "yaw": -2.981567625973164,
+      "view": "The room contains a red chair, a wooden table, and a computer monitor."
+    },
+    {
+      "grid_idx": [
+        146,
+        47
+      ],
+      "yaw": -1.9195985097577501,
+      "view": "The room features a large reddish, rounded object and a rectangular surface in a muted brown tone."
+    },
+    {
+      "grid_idx": [
+        144,
+        31
+      ],
+      "yaw": -0.8645661726631628,
+      "view": "The room is uniformly light gray with no distinct objects visible."
+    },
+    {
+      "grid_idx": [
+        174,
+        26
+      ],
+      "yaw": 0.030063169544529308,
+      "view": "A large brown rectangular structure is visible against light gray walls in this indoor space."
+    },
+    {
+      "grid_idx": [
+        204,
+        26
+      ],
+      "yaw": 0.017914199453902234,
+      "view": "The visible area is a uniform, solid gray surface."
+    },
+    {
+      "grid_idx": [
+        210,
+        27
+      ],
+      "yaw": -1.0624852231787933,
+      "view": "The room features a uniform, solid gray surface with no distinct objects visible."
+    },
+    {
+      "grid_idx": [
+        211,
+        27
+      ],
+      "yaw": -2.132092265888154,
+      "view": "The room consists entirely of a uniform gray surface."
+    },
+    {
+      "grid_idx": [
+        207,
+        26
+      ],
+      "yaw": 3.1021809211263127,
+      "view": "The room contains a light brown cabinet and a dark desk against gray walls."
+    },
+    {
+      "grid_idx": [
+        177,
+        29
+      ],
+      "yaw": 3.1378746245254376,
+      "view": "The room features a wooden table, a bright red chair, and a dark monitor."
+    },
+    {
+      "grid_idx": [
+        168,
+        32
+      ],
+      "yaw": 2.0882770151909122,
+      "view": "The room contains a bright red chair and several rectangular wooden structures."
+    },
+    {
+      "grid_idx": [
+        168,
+        43
+      ],
+      "yaw": 1.036627654537601,
+      "view": "A long row of wooden chairs with light yellow cushions extends into the background of the room."
+    },
+    {
+      "grid_idx": [
+        189,
+        64
+      ],
+      "yaw": 0.7856096176602684,
+      "view": "The area features several light-colored tables surrounded by wooden chairs set against a dark brown backdrop."
+    },
+    {
+      "grid_idx": [
+        196,
+        75
+      ],
+      "yaw": 1.863825282673516,
+      "view": "Several red dome-shaped objects are situated near a low wooden structure against a gray background."
+    },
+    {
+      "grid_idx": [
+        196,
+        75
+      ],
+      "yaw": 2.9460358335235153,
+      "view": "The room features a large gray wall and a horizontal wooden structure in the middle ground."
+    },
+    {
+      "grid_idx": [
+        196,
+        76
+      ],
+      "yaw": -2.2722737484335034,
+      "view": "The room features a wooden cabinet, a table with red chairs, and a black monitor."
+    },
+    {
+      "grid_idx": [
+        195,
+        71
+      ],
+      "yaw": -1.2247713213374611,
+      "view": "A large, rectangular tan partition is set against light gray walls."
+    },
+    {
+      "grid_idx": [
+        200,
+        66
+      ],
+      "yaw": -0.16956376246362836,
+      "view": "A large, vertical brown surface occupies the foreground against a plain gray background."
+    },
+    {
+      "grid_idx": [
+        207,
+        69
+      ],
+      "yaw": 0.8817435011972616,
+      "view": "The visual space is defined by a corner where a dark brown surface meets a light gray surface."
+    },
+    {
+      "grid_idx": [
+        210,
+        99
+      ],
+      "yaw": 1.4963854857987802,
+      "view": "The room contains wooden frames, red objects, and a large brown wall along a light-colored path."
+    },
+    {
+      "grid_idx": [
+        210,
+        111
+      ],
+      "yaw": 2.579726706988576,
+      "view": "The room features horizontal wooden beams, a light-colored platform, and several scattered red objects against gray walls."
+    },
+    {
+      "grid_idx": [
+        210,
+        111
+      ],
+      "yaw": -2.620282881655326,
+      "view": "The room features rows of wooden benches and chairs set against light gray walls."
+    },
+    {
+      "grid_idx": [
+        209,
+        108
+      ],
+      "yaw": -1.5665919164947033,
+      "view": "The hallway features brown walls and several light brown wooden chairs lining the right side."
+    },
+    {
+      "grid_idx": [
+        209,
+        78
+      ],
+      "yaw": -1.5700548032647657,
+      "view": "A large brown rectangular structure defines the corner of the interior space with light-colored walls."
+    },
+    {
+      "grid_idx": [
+        213,
+        52
+      ],
+      "yaw": -2.632376463836376,
+      "view": "A red table and a red chair are visible in the room."
+    }
+  ]
+}

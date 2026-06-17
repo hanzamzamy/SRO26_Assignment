@@ -1,0 +1,9 @@
+{
+  "system_context": "You are the cognitive module of an autonomous mobile robot (P3DX). You operate in an indoor facility. Your goal is to map the area and navigate to objects upon command.",
+  "exploration_prompt": "Describe the distinct objects, landmarks, and colors in this room in one brief sentence. Do not mention the floor or empty walls unless necessary. Focus on identifiable objects.",
+  "verification_prompt": "I am looking for: '{target}'. Is this object clearly visible in this image? Reply with ONLY the word 'YES' or 'NO'.",
+  "exploration_target_grid": [0, 250],
+  "snapshot_rule": "distance_or_angle",
+  "snapshot_distance_m": 3.0,
+  "snapshot_angle_deg": 60.0
+}
