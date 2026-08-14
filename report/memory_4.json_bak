@@ -74,14 +74,6 @@
     },
     {
       "grid_idx": [
-        139,
-        190
-      ],
-      "yaw": 0.2250372425959137,
-      "view": "The room contains blue chairs arranged near a desk, with prominent brown partitioning and neutral wall tones."
-    },
-    {
-      "grid_idx": [
         154,
         188
       ],
@@ -103,14 +95,6 @@
       ],
       "yaw": -1.7868469202816826,
       "view": "The room holds a brown box, a checkered white-and-gray floor, and light gray walls that define its simple layout."
-    },
-    {
-      "grid_idx": [
-        139,
-        127
-      ],
-      "yaw": -1.5717582835407486,
-      "view": "The room displays yellow chairs around a light table, a tall brown cabinet, and a checkered tiled space."
     },
     {
       "grid_idx": [
@@ -346,14 +330,6 @@
     },
     {
       "grid_idx": [
-        158,
-        44
-      ],
-      "yaw": -3.0734627491242184,
-      "view": "The room features a red office chair positioned in front of a simple wooden table holding a closed laptop, creating a clear workspace setup."
-    },
-    {
-      "grid_idx": [
         146,
         47
       ],
@@ -459,14 +435,6 @@
     {
       "grid_idx": [
         210,
-        78
-      ],
-      "yaw": 1.6727315926637782,
-      "view": "The room contains long tables with yellow chairs, red lamp stands, and a laptop, primarily in white and brown tones."
-    },
-    {
-      "grid_idx": [
-        210,
         108
       ],
       "yaw": 1.592187753430725,
@@ -559,6 +527,142 @@
       ],
       "yaw": 0.4840541513892686,
       "view": "The room features prominent red objects, such as a hand-like structure, set against a neutral backdrop."
+    },
+    {
+      "grid_idx": [
+        138,
+        188
+      ],
+      "yaw": 0.36957950555716834,
+      "view": "The room contains a tall brown cabinet and several blue chairs."
+    },
+    {
+      "grid_idx": [
+        137,
+        168
+      ],
+      "yaw": 1.4219134566429308,
+      "view": "The room contains a brown vertical structure on the right side."
+    },
+    {
+      "grid_idx": [
+        136,
+        168
+      ],
+      "yaw": 0.373436668283761,
+      "view": "The room contains multiple blue chairs, a brown partition wall, and a desk with a monitor."
+    },
+    {
+      "grid_idx": [
+        209,
+        76
+      ],
+      "yaw": 1.5278077623469366,
+      "view": "The room contains yellow-cushioned wooden chairs, a white table, three red objects, and a large brown counter."
+    },
+    {
+      "grid_idx": [
+        209,
+        106
+      ],
+      "yaw": 1.5700261158204554,
+      "view": "The room contains a yellow-slatted wooden chair, red chairs, a white table, and a large brown cabinet."
+    },
+    {
+      "grid_idx": [
+        199,
+        130
+      ],
+      "yaw": 2.6242822650480093,
+      "view": "The room contains a white table, red chairs, and a dark gray laptop."
+    },
+    {
+      "grid_idx": [
+        142,
+        145
+      ],
+      "yaw": 2.427570404441669,
+      "view": "No distinct objects, landmarks, or colors are visible in this view."
+    },
+    {
+      "grid_idx": [
+        136,
+        170
+      ],
+      "yaw": 1.3774334360447016,
+      "view": "A brown object is visible on the right side of the room."
+    },
+    {
+      "grid_idx": [
+        139,
+        190
+      ],
+      "yaw": 0.29201310298830163,
+      "view": "The room contains a brownish-gold rectangular pillar and several blue chairs positioned next to a brown table."
+    },
+    {
+      "grid_idx": [
+        139,
+        160
+      ],
+      "yaw": -1.5718429869991004,
+      "view": "The room contains a white table with yellow-seated wooden chairs and a brown rectangular box."
+    },
+    {
+      "grid_idx": [
+        139,
+        130
+      ],
+      "yaw": -1.570907262527759,
+      "view": "The room contains a row of brown chairs with yellow cushions and a brown rectangular block."
+    },
+    {
+      "grid_idx": [
+        139,
+        129
+      ],
+      "yaw": -2.639935220295806,
+      "view": "No identifiable objects, landmarks, or distinct colors are visible in this uniform gray environment."
+    },
+    {
+      "grid_idx": [
+        139,
+        129
+      ],
+      "yaw": 2.541760396938026,
+      "view": "No identifiable objects, landmarks, or distinct colors are visible in the current view."
+    },
+    {
+      "grid_idx": [
+        161,
+        175
+      ],
+      "yaw": 0.06989859100397348,
+      "view": "The room contains several blue chairs and a brown table holding a black monitor."
+    },
+    {
+      "grid_idx": [
+        146,
+        148
+      ],
+      "yaw": -1.4914038062694557,
+      "view": "The room contains rows of wooden chairs with yellow cushions and several brown cabinets."
+    },
+    {
+      "grid_idx": [
+        169,
+        124
+      ],
+      "yaw": -0.3118435415678571,
+      "view": "The room features a long white table surrounded by several tan chairs with yellow cushions."
+    },
+    {
+      "grid_idx": [
+        170,
+        127
+      ],
+      "yaw": 2.2634014338318456,
+      "view": "The room contains a white table and a red office chair."
     }
   ]
 }
